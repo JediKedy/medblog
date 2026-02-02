@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'MedBlog',
+  title: 'MedBlog - Tibbi mövzularda bloq',
   author: 'JediKedy',
-  headerTitle: 'Medblog',
+  headerTitle: 'MedBlog',
   description: 'Tibbi mövzularda bloq',
   language: 'az-AZ',
   theme: 'system', // system, dark or light
@@ -22,7 +22,7 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com',
   medium: 'https://medium.com',
   bluesky: 'https://bsky.app/',
-  locale: 'en-US',
+  locale: 'az-AZ',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
   analytics: {
