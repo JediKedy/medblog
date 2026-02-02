@@ -4,7 +4,7 @@ import { slug } from 'github-slugger'
 import tagData from 'app/tag-data.json'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Teqlər', description: 'Məqalələrə aid etiketlər' })
+export const metadata = genPageMetadata({ title: 'Tags', description: 'Things I blog about' })
 
 export default async function Page() {
   const tagCounts = tagData as Record<string, number>
@@ -19,7 +19,7 @@ export default async function Page() {
           </h1>
         </div>
         <div className="flex max-w-lg flex-wrap">
-          {tagKeys.length === 0 && 'Heç bir teq tapılmadı.'}
+          {tagKeys.length === 0 && 'No tags found.'}
           {sortedTags.map((t) => {
             return (
               <div key={t} className="mt-2 mr-5 mb-2">
@@ -27,7 +27,7 @@ export default async function Page() {
                 <Link
                   href={`/tags/${slug(t)}`}
                   className="-ml-2 text-sm font-semibold text-gray-600 uppercase dark:text-gray-300"
-                  aria-label={`${t} teqi üçün məqalələr`}
+                  aria-label={`View posts tagged ${t}`}
                 >
                   {` (${tagCounts[t]})`}
                 </Link>
