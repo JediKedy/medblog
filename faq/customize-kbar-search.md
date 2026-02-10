@@ -1,10 +1,10 @@
-# How can I customize the `kbar` search?
+# `kbar` axtarışını necə fərdiləşdirə bilərəm?
 
-Add a `SearchProvider` component such as the one shown below and use it in place of the default `SearchProvider` component in `app/layout.tsx`.
+Aşağıdakı kimi bir `SearchProvider` komponenti əlavə edin və `app/layout.tsx` faylında standart `SearchProvider` əvəzinə bunu istifadə edin.
 
-`defaultActions` are the initial list of actions.
+`defaultActions` başlanğıc əmrlər siyahısıdır.
 
-`onSearchDocumentsLoad` is a callback function that is called when the documents specified by `searchDocumentsPath` are loaded. Set `searchDocumentsPath` to `false` to disable the dynamically loaded search feature.
+`onSearchDocumentsLoad` isə `searchDocumentsPath` ilə göstərilən sənədlər yüklənəndə çağırılan callback funksiyasıdır. Dinamik yüklənən axtarışı söndürmək üçün `searchDocumentsPath` dəyərini `false` edin.
 
 ```tsx
 'use client'
@@ -23,18 +23,18 @@ export const SearchProvider = ({ children }) => {
         defaultActions: [
           {
             id: 'homepage',
-            name: 'Homepage',
+            name: 'Ana səhifə',
             keywords: '',
             shortcut: ['h', 'h'],
-            section: 'Home',
+            section: 'Ana səhifə',
             perform: () => router.push('/'),
           },
           {
             id: 'projects',
-            name: 'Projects',
+            name: 'Layihələr',
             keywords: '',
             shortcut: ['p'],
-            section: 'Home',
+            section: 'Ana səhifə',
             perform: () => router.push('/projects'),
           },
         ],
@@ -43,7 +43,7 @@ export const SearchProvider = ({ children }) => {
             id: post.path,
             name: post.title,
             keywords: post?.summary || '',
-            section: 'Blog',
+            section: 'Bloq',
             subtitle: post.tags.join(', '),
             perform: () => router.push('/' + post.path),
           }))
@@ -56,7 +56,7 @@ export const SearchProvider = ({ children }) => {
 }
 ```
 
-You can even choose to do a full text search over the entire generated blog content though this would come at the expense of a larger search index file by modifying the `createSearchIndex` function in `contentlayer.config.ts` to:
+Hətta bütün bloq məzmununda tam mətn axtarışı da qura bilərsiniz. Bunun üçün `contentlayer.config.ts` içindəki `createSearchIndex` funksiyasını belə dəyişin (axtarış indeksi faylı daha böyük olacaq):
 
 ```tsx
 function createSearchIndex(allBlogs) {
@@ -68,14 +68,14 @@ function createSearchIndex(allBlogs) {
       `public/${siteMetadata.search.kbarConfig.searchDocumentsPath}`,
       JSON.stringify(sortPosts(allBlogs))
     )
-    console.log('Local search index generated...')
+    console.log('Yerli axtarış indeksi yaradıldı...')
   }
 }
 ```
 
-Note the change from `JSON.stringify(allCoreContent(sortPosts(allBlogs)))` to `JSON.stringify((sortPosts(allBlogs)))`.
+Yəni `JSON.stringify(allCoreContent(sortPosts(allBlogs)))` əvəzinə `JSON.stringify((sortPosts(allBlogs)))` istifadə edilir.
 
-Next, in the modified `SearchProvider`, dump the raw content to the `keywords` field in the `onSearchDocumentsLoad` prop:
+Daha sonra dəyişdirilmiş `SearchProvider` daxilində `onSearchDocumentsLoad` hissəsində `keywords`-ə xam məzmunu verin:
 
 ```tsx
 onSearchDocumentsLoad(json) {
@@ -83,7 +83,7 @@ onSearchDocumentsLoad(json) {
     id: post.path,
     name: post.title,
     keywords: post.body.raw,
-    section: 'Blog',
+    section: 'Bloq',
     subtitle: post.tags.join(', '),
     perform: () => router.push('/' + post.path),
   }))
