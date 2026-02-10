@@ -11,9 +11,9 @@ const siteMetadata = {
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
-  x: 'https://twitter.com/x',
+  email: 'address@saytiniz.com',
+  github: 'https://github.com/JediKedy',
+  x: 'https://x.com',
   // twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
@@ -23,7 +23,7 @@ const siteMetadata = {
   medium: 'https://medium.com',
   bluesky: 'https://bsky.app/',
   locale: 'az-AZ',
-  // set to true if you want a navbar fixed to the top
+  // naviqasiya panelinin yuxarıda sabit qalmasını istəyirsinizsə true edin
   stickyNav: false,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
@@ -81,7 +81,7 @@ const siteMetadata = {
       // example: https://giscus.app/themes/custom_example.css
       themeURL: '',
       // This corresponds to the `data-lang="en"` in giscus's configurations
-      lang: 'en',
+      lang: 'az',
     },
   },
   search: {

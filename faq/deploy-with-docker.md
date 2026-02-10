@@ -1,20 +1,20 @@
-# Deploy with Docker
+# Docker ilə yerləşdirmə
 
-Follow the [official Next.js repo docker build example and instructions](https://github.com/vercel/next.js/tree/canary/examples/with-docker) to deploy with docker. Copy the [`Dockerfile`](https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile) into the root of the project and modify the `next.config.js` file:
+Docker ilə yerləşdirmək üçün [rəsmi Next.js repo nümunəsinə və təlimatına](https://github.com/vercel/next.js/tree/canary/examples/with-docker) baxın. Layihənin kök qovluğuna [`Dockerfile`](https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile) faylını əlavə edin və `next.config.js` faylını belə yeniləyin:
 
 ```js
 // next.config.js
 module.exports = {
-  // ... rest of the configuration.
+  // ... konfiqurasiyanın qalan hissəsi.
   output: 'standalone',
 }
 ```
 
-You can now build the docker image and run it:
+Daha sonra docker imicini yaradıb işə sala bilərsiniz:
 
 ```bash
 docker build -t nextjs-docker .
 docker run -p 3000:3000 nextjs-docker
 ```
 
-Alternatively, to use docker compose, refer to the [docker compose repo](https://github.com/vercel/next.js/tree/canary/examples/with-docker-compose).
+Alternativ olaraq docker compose istifadə etmək üçün [docker compose repo nümunəsinə](https://github.com/vercel/next.js/tree/canary/examples/with-docker-compose) baxın.

@@ -65,7 +65,7 @@ const ThemeSwitch = () => {
     <div className="flex items-center">
       <Menu as="div" className="relative inline-block text-left">
         <div className="hover:text-primary-500 dark:hover:text-primary-400 flex items-center justify-center">
-          <MenuButton aria-label="Theme switcher">
+          <MenuButton aria-label="Mövzu dəyişdirici">
             {mounted ? resolvedTheme === 'dark' ? <Moon /> : <Sun /> : <Blank />}
           </MenuButton>
         </div>
@@ -90,7 +90,7 @@ const ThemeSwitch = () => {
                         <div className="mr-2">
                           <Sun />
                         </div>
-                        Light
+                        İşıqlı
                       </button>
                     )}
                   </MenuItem>
@@ -106,7 +106,7 @@ const ThemeSwitch = () => {
                         <div className="mr-2">
                           <Moon />
                         </div>
-                        Dark
+                        Qaranlıq
                       </button>
                     )}
                   </MenuItem>
@@ -122,7 +122,7 @@ const ThemeSwitch = () => {
                         <div className="mr-2">
                           <Monitor />
                         </div>
-                        System
+                        Sistem
                       </button>
                     )}
                   </MenuItem>
