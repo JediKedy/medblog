@@ -9,11 +9,19 @@ import { Metadata } from 'next'
 
 const POSTS_PER_PAGE = 5
 
+const normalizeTagParam = (tag: string) => {
+  try {
+    return decodeURIComponent(tag)
+  } catch {
+    return tag
+  }
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ tag: string }>
 }): Promise<Metadata> {
   const params = await props.params
-  const tag = decodeURI(params.tag)
+  const tag = normalizeTagParam(params.tag)
   return genPageMetadata({
     title: tag,
     description: `${siteMetadata.title} ${tag} teqinə aid məzmun`,
@@ -30,13 +38,13 @@ export const generateStaticParams = async () => {
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
   return tagKeys.map((tag) => ({
-    tag: encodeURI(tag),
+    tag,
   }))
 }
 
 export default async function TagPage(props: { params: Promise<{ tag: string }> }) {
   const params = await props.params
-  const tag = decodeURI(params.tag)
+  const tag = normalizeTagParam(params.tag)
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   const filteredPosts = allCoreContent(
     sortPosts(allBlogs.filter((post) => post.tags && post.tags.map((t) => slug(t)).includes(tag)))

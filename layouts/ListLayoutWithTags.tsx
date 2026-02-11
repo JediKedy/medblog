@@ -14,6 +14,15 @@ interface PaginationProps {
   totalPages: number
   currentPage: number
 }
+const normalizeTagParam = (tag: string | undefined) => {
+  if (!tag) return ''
+  try {
+    return decodeURIComponent(tag)
+  } catch {
+    return tag
+  }
+}
+
 interface ListLayoutProps {
   posts: CoreContent<Blog>[]
   title: string
@@ -104,7 +113,7 @@ export default function ListLayoutWithTags({
                 {sortedTags.map((t) => {
                   return (
                     <li key={t} className="my-3">
-                      {decodeURI(pathname.split('/tags/')[1]) === slug(t) ? (
+                      {normalizeTagParam(pathname.split('/tags/')[1]?.split('/')[0]) === slug(t) ? (
                         <h3 className="text-primary-500 inline px-3 py-2 text-sm font-bold uppercase">
                           {`${t} (${tagCounts[t]})`}
                         </h3>
