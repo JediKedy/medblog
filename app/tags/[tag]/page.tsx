@@ -9,6 +9,14 @@ import { Metadata } from 'next'
 
 const POSTS_PER_PAGE = 5
 
+const normalizeTagParam = (tag: string) => {
+  try {
+    return decodeURIComponent(tag)
+  } catch {
+    return tag
+  }
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ tag: string }>
 }): Promise<Metadata> {

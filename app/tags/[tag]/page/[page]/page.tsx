@@ -7,6 +7,14 @@ import { notFound } from 'next/navigation'
 
 const POSTS_PER_PAGE = 5
 
+const normalizeTagParam = (tag: string) => {
+  try {
+    return decodeURIComponent(tag)
+  } catch {
+    return tag
+  }
+}
+
 export const generateStaticParams = async () => {
   const tagCounts = tagData as Record<string, number>
   return Object.keys(tagCounts).flatMap((tag) => {

@@ -14,6 +14,15 @@ interface PaginationProps {
   totalPages: number
   currentPage: number
 }
+const normalizeTagParam = (tag: string | undefined) => {
+  if (!tag) return ''
+  try {
+    return decodeURIComponent(tag)
+  } catch {
+    return tag
+  }
+}
+
 interface ListLayoutProps {
   posts: CoreContent<Blog>[]
   title: string
