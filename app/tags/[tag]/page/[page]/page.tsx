@@ -29,7 +29,7 @@ export const generateStaticParams = async () => {
 
 export default async function TagPage(props: { params: Promise<{ tag: string; page: string }> }) {
   const params = await props.params
-  const tag = normalizeTagParam(params.tag)
+  const tag = params.tag
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   const pageNumber = parseInt(params.page)
   const filteredPosts = allCoreContent(

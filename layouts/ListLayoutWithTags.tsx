@@ -113,7 +113,7 @@ export default function ListLayoutWithTags({
                 {sortedTags.map((t) => {
                   return (
                     <li key={t} className="my-3">
-                      {normalizeTagParam(pathname.split('/tags/')[1]?.split('/')[0]) === slug(t) ? (
+                      {pathname.split('/tags/')[1]?.split('/')[0] === slug(t) ? (
                         <h3 className="text-primary-500 inline px-3 py-2 text-sm font-bold uppercase">
                           {`${t} (${tagCounts[t]})`}
                         </h3>
